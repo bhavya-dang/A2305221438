@@ -9,10 +9,10 @@ const token = process.env.BEARER_TOKEN;
 // Window size for storing numbers
 const windowSize = 10;
 
-// Store the numbers received from the third-party server
+// Store the numbers received from the test server
 let windowCurrState = new Set();
 
-// Function to fetch numbers from the third-party server
+// Function to fetch numbers from the test server
 async function fetchNumbers(numberid) {
   try {
     const response = await axios.get(`http://20.244.56.144/test/${numberid}`, {
@@ -40,7 +40,7 @@ function calculateAverage(numbers) {
 app.get("/numbers/:numberId", async (req, res) => {
   const numberId = req.params.numberId;
   let type;
-  // Fetch numbers from the third-party server
+  // Fetch numbers from the test server
   if (numberId === "e") {
     type = "even";
   } else if (numberId === "p") {
