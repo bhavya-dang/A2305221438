@@ -13,7 +13,7 @@ const windowSize = 10;
 let windowCurrState = new Set();
 
 // Function to fetch numbers from the test server
-async function fetchNumbers(numberid) {
+const fetchNumbers = async (numberid) => {
   try {
     const response = await axios.get(`http://20.244.56.144/test/${numberid}`, {
       headers: {
@@ -25,16 +25,16 @@ async function fetchNumbers(numberid) {
     console.error("Error fetching numbers:", error);
     return { numbers: [] };
   }
-}
+};
 
 // Function to calculate the average of the numbers in the window
-function calculateAverage(numbers) {
+const calculateAverage = async (numbers) => {
   if (numbers.length === 0) {
     return 0;
   }
   const sum = numbers.reduce((acc, num) => acc + num, 0);
   return sum / numbers.length;
-}
+};
 
 // Endpoint to handle number requests
 app.get("/numbers/:numberId", async (req, res) => {
